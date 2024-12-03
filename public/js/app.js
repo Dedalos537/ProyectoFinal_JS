@@ -180,3 +180,7 @@ socket.on('user connected', (username) => {
         chatWindow.removeChild(messageElement);
     }, 3000); // Tiempo antes de desaparecer la notificación
 });
+document.querySelector('.logout-btn').addEventListener('click', function() {
+    // Lógica para cerrar sesión
+    alert('Cerrando sesión...');
+});

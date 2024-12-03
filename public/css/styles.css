@@ -150,14 +150,6 @@ form button:hover {
   background-color: #e74c3c;
 }
 
-/* Contenedor del Chat */
-.chat-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background: #2c2c3e;
-}
 
 .chat-window {
   flex: 1;
@@ -269,6 +261,82 @@ form button:hover {
   gap: 10px;
 }
 
+/* Estilo para el botón de enviar */
+.send-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  background: #5294e2;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Contenedor del Chat */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #2c2c3e;
+}
+
+/* Ventana del chat */
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 20px;
+  background: #3a3a4e;
+  border-radius: 10px;
+  color: #d1d1e1;
+}
+
+/* Barra de entrada de chat */
+.chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 10px; /* Añadir padding para que no esté pegado al borde */
+  background: #2c2c3e; /* Fondo para el input */
+}
+
+/* Estilo para el botón de enviar */
+.send-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  background: #5294e2;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Cambiar el botón de enviar a una flecha en dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .send-btn {
+    padding: 10px;
+    width: 40px; /* Ajustar el ancho del botón */
+    height: 40px; /* Ajustar la altura del botón */
+    border-radius: 50%; /* Hacer el botón redondo */
+    background: #5294e2; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .send-btn::before {
+    content: '➡'; /* Usar un símbolo de flecha */
+    font-size: 1.5rem; /* Tamaño de la flecha */
+  }
+
+  /* Ocultar el texto "Enviar" en dispositivos móviles */
+  .send-btn span {
+    display: none;
+  }
+}
+
 #msg {
   flex: 1;
   padding: 12px;
@@ -277,6 +345,14 @@ form button:hover {
   background: #1e1e2f;
   color: #d1d1e1;
   outline: none;
+}
+
+/* Responsivo: Ajustar el input en móviles */
+@media screen and (max-width: 768px) {
+  #msg {
+    padding: 10px; /* Ajustar el padding */
+    font-size: 0.9rem; /* Ajustar el tamaño de fuente */
+  }
 }
 
 button {
@@ -306,6 +382,7 @@ button:hover {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
+    animation: slideIn 0.5s ease-in-out; /* Animación al aparecer */
   }
 
   .user-info {
@@ -326,11 +403,93 @@ button:hover {
   .logout-btn {
     padding: 8px;
     margin-top: 0;
+    animation: fadeIn 0.5s ease-in-out; /* Animación al aparecer */
   }
 
-  .chat-container {
-    width: 100%;
-    height: auto;
+  /* Contenedor del Chat */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #2c2c3e;
+}
+
+/* Ventana del chat */
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 20px;
+  background: #3a3a4e;
+  border-radius: 10px;
+  color: #d1d1e1;
+}
+
+/* Barra de entrada de chat */
+.chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 10px; /* Añadir padding para que no esté pegado al borde */
+  background: #2c2c3e; /* Fondo para el input */
+}
+
+/* Estilo para el botón de enviar */
+.send-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  background: #5294e2;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Cambiar el botón de enviar a una flecha en dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .send-btn {
+    padding: 10px;
+    width: 40px; /* Ajustar el ancho del botón */
+    height: 40px; /* Ajustar la altura del botón */
+    border-radius: 50%; /* Hacer el botón redondo */
+    background: #5294e2; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .send-btn::before {
+    content: '➡'; /* Usar un símbolo de flecha */
+    font-size: 1.5rem; /* Tamaño de la flecha */
+  }
+
+  /* Ocultar el texto "Enviar" en dispositivos móviles */
+  .send-btn span {
+    display: none;
+  }
+}
+}
+
+/* Animación para la barra de navegación */
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animación para el botón de cerrar sesión */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 /* Animación para mensajes */
