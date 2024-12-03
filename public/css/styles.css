@@ -1,0 +1,521 @@
+/* General Styles */
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #1e1e2f; /* Modo oscuro */
+  color: #d1d1e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a {
+  color: #5294e2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #2c2c3e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #3a3a4e;
+  background: #1e1e2f;
+  color: #d1d1e1;
+  outline: none;
+}
+
+form input:focus {
+  border-color: #5294e2;
+}
+
+form button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #5294e2;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #4178c2;
+}
+
+/*=============================================================================*/
+/* Contenedor principal */
+.main-container {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  border-radius: 12px;
+  background: #2c2c3e;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Sidebar Izquierda */
+.sidebar {
+  width: 25%;
+  background: #3a3a4e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-logo {
+  width: 60px;
+  height: 60px;
+  background: #5294e2;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-details p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logout-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #e74c3c;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}
+
+/* Notificación */
+.user-notification {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.notification {
+  padding: 10px;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+  max-width: 60%;
+  text-align: center;
+}
+
+.notification.connected {
+  background-color: #5294e2;
+}
+
+.notification.disconnected {
+  background-color: #e74c3c;
+}
+
+/* Contenedor del Chat */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #2c2c3e;
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 20px;
+  background: #3a3a4e;
+  border-radius: 10px;
+  color: #d1d1e1;
+}
+
+/* Contenedor de los mensajes (derecha e izquierda) */
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative; /* Para posicionar la hora */
+}
+
+.message-bubble {
+  background: #5294e2;
+  padding: 10px;
+  border-radius: 15px;
+  color: #fff;
+  word-wrap: break-word;
+  position: relative;
+  max-width: 80%;
+  margin-bottom: 5px;
+}
+
+.message.me .message-bubble {
+  background: #5294e2;
+  align-self: flex-end;
+}
+
+.message.other .message-bubble {
+  background: #8c8cff;
+  align-self: flex-start;
+}
+/* Estilo para el nombre del usuario (encima del mensaje) */
+.message .username {
+  margin-bottom: 5px;
+  text-align: relative;
+  font-weight: bold;
+}/* Estilo para el nombre del usuario (encima del mensaje) */
+.message.me .username {
+  align-self: flex-end; /* Alinear a la derecha para el usuario actual */
+  text-align: right; /* Alinear el texto a la derecha */
+}
+
+.message.other .username {
+  align-self: flex-start; /* Alinear a la izquierda para otros usuarios */
+  text-align: left; /* Alinear el texto a la izquierda */
+}
+
+/* Estilo para la hora (debajo del mensaje) */
+.message .timestamp {
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 0.75rem;
+  color: #aaa;
+  text-align: right;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 5px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+  padding-right: 10px;
+
+}
+/* Estilo para la hora (debajo del mensaje) */
+.message.me .timestamp {
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 0.75rem;
+  color: #aaa;
+  text-align: right; /* Alinear a la derecha para el usuario actual */
+}
+
+.message.other .timestamp {
+  position: absolute;
+  bottom: -15px;
+  left: 50px; /* Alinear a la izquierda para otros usuarios */
+  font-size: 0.75rem;
+  color: #aaa;
+  text-align: left; /* Alinear el texto a la izquierda */
+  margin-top: 5px;
+  align-self: flex-end;
+}
+
+/* Nombre de usuario */
+.username {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Estilo para la barra de entrada de chat */
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+#msg {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #3a3a4e;
+  background: #1e1e2f;
+  color: #d1d1e1;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  background: #5294e2;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #4178c2;
+}
+
+/* Responsivo: Sidebar se convierte en Navbar */
+@media screen and (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .user-info {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .user-logo {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  .user-details p {
+    font-size: 1rem;
+  }
+
+  .logout-btn {
+    padding: 8px;
+    margin-top: 0;
+  }
+
+  .chat-container {
+    width: 100%;
+    height: auto;
+  }
+}
+/* Animación para mensajes */
+@keyframes fadeInMessage {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Animación para notificaciones de usuario */
+@keyframes slideInNotification {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Animación para cerrar sesión */
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+/* Animación para la barra de entrada de mensajes */
+@keyframes glowInput {
+  0%, 100% {
+      box-shadow: 0 0 5px #5294e2;
+  }
+  50% {
+      box-shadow: 0 0 15px #5294e2;
+  }
+}
+
+/* Animación para botón enviar */
+@keyframes pulseButton {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Aplicación de animaciones */
+.message-wrapper {
+  animation: fadeInMessage 0.5s ease-in-out;
+}
+
+.user-notification .notification {
+  animation: slideInNotification 0.5s ease-in-out;
+}
+
+#msg:focus {
+  animation: glowInput 1.5s infinite ease-in-out;
+}
+
+button:hover {
+  animation: pulseButton 0.5s ease-in-out;
+}
+
+/* Para transición de notificación de cierre de sesión */
+.user-notification.logout {
+  animation: fadeOut 0.5s ease-out;
+}
+/* Animación para entrada del formulario */
+@keyframes fadeInForm {
+  from {
+      opacity: 0;
+      transform: translateY(-30px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Animación para los inputs cuando son enfocados */
+@keyframes glowInput {
+  0%, 100% {
+      box-shadow: 0 0 5px #5294e2;
+  }
+  50% {
+      box-shadow: 0 0 15px #5294e2;
+  }
+}
+
+/* Animación para el botón al ser presionado */
+@keyframes buttonPress {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(0.95);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Formulario de entrada con animación */
+form {
+  animation: fadeInForm 0.8s ease-in-out;
+}
+
+/* Input animación al ser enfocado */
+form input:focus {
+  animation: glowInput 1.5s infinite ease-in-out;
+}
+
+/* Botón de animación al clic */
+form button:active {
+  animation: buttonPress 0.2s ease-in-out;
+}
+
+
+form.login {
+  animation: slideForm 0.5s ease-in-out;
+}
+
+form.register {
+  animation: slideForm 0.5s ease-in-out reverse;
+}
+/* Indicador para el usuario actual */
+.typing-indicator.me {
+  background: #5294e2; /* Color de la burbuja del usuario actual */
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  max-width: fit-content;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 5px;
+}
+
+/* Indicador para otros usuarios */
+.typing-indicator.other {
+  background: #8c8cff; /* Color de la burbuja de otros usuarios */
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  max-width: fit-content;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 5px;
+}
+
+/* Estilo de puntos comunes */
+.typing-indicator .dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: blink 1.2s infinite;
+}
+
+/* Animación para puntos */
+@keyframes blink {
+  0%, 20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

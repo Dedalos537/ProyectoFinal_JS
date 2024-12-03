@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="form-container">
+    <form class="register-form" action="/register" method="POST">
+        <h2>Registro</h2>
+        <input type="text" id="username" name="username" placeholder="Usuario" required>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+        <button type="submit">Registrar</button>
+        <% if (error) { %>
+            <p style="color: red; text-align: center;"><%= error %></p>
+        <% } %>
+        <br/>
+        <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
+    </form>
+</div>
+</body>
+</html>
